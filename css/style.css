@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Asegura que el cuerpo tenga al menos la altura de la ventana */
+}
+
+canvas {
+    display: block; /* Elimina el pequeño espacio inferior que algunos navegadores aplican por defecto */
+    height: auto; /* Permite que la altura sea dinámica */
+}
+
+#color-selector {
+
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0;
+}
+
+.color {
+    height: 50px;
+    width: 50px;
+    border: none;
+    margin-left: 20px;
+    -webkit-appearance: none; /* Para Safari y Chrome */
+    -moz-appearance: none; /* Para Firefox */
+    appearance: none; /* Estándar */
+    background-color: transparent;
+    
+    padding: 0;
+}
