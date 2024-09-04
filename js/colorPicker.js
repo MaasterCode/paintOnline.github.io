@@ -31,7 +31,6 @@ export function initializeColorPicker(colorSelector, editButton) {
         colorInputs.forEach(input => {
             input.classList.toggle('editable');
         });
-        console.log(editButton)
         if (editButton.classList.contains('editando')) {
             editButton.innerText = "Editar colores"
         } else {

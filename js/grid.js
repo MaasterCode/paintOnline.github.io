@@ -19,23 +19,7 @@ export function initializeGrid(canvas, context, numColumns, numRows, cellWidth, 
         canvas.width = cellWidth * numColumns;
         canvas.height = cellHeight * numRows;
 
-        fillGrid();
-        /*for (let i = 0; i <= numColumns; i++) {
-            const x = i * cellWidth;
-            context.beginPath();
-            context.moveTo(x, 0);
-            context.lineTo(x, canvas.height);
-            //context.stroke();
-        }
-
-        for (let j = 0; j <= numRows; j++) {
-            const y = j * cellHeight;
-            context.beginPath();
-            context.moveTo(0, y);
-            context.lineTo(canvas.width, y);
-            //context.stroke();
-        }*/
-        
+        fillGrid();        
     }
 
     resizeCanvas();

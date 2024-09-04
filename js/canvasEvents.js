@@ -25,33 +25,48 @@ export function initializeCanvasEvents(canvas, context, grid, gridInfo, colorPic
 
     // Función para dibujar una línea entre dos puntos (incluso con casillas)
     function drawLine(x0, y0, x1, y1) {
+        x0 = Math.ceil(x0);
+        x1 = Math.ceil(x1);
+        y0 = Math.ceil(y0);
+        y1 = Math.ceil(y1);
         const dx = Math.abs(x1 - x0);
         const dy = Math.abs(y1 - y0);
-        const sx = (x0 < x1) ? 1 : -1;
-        const sy = (y0 < y1) ? 1 : -1;
-        let err = dx - dy;
-
-        while (true) {
+        const sx = (x0 < x1) ? 1 : -1;  // Dirección en X
+        const sy = (y0 < y1) ? 1 : -1;  // Dirección en Y
+        let err = dx - dy;  // Error inicial para controlar el avance
+        let maxAdvances = 300;  // Límite para evitar bucles infinitos
+    
+        while (true && --maxAdvances > 0) {
             const { coordX, coordY } = grid.getCellCoordinates(x0, y0);
+            
+            // Dibujar la celda actual
             context.fillStyle = currentColor;
             context.clearRect(coordX * grid.cellWidth, coordY * grid.cellHeight, grid.cellWidth, grid.cellHeight);
             context.fillRect(coordX * gridInfo.cellWidth, coordY * gridInfo.cellHeight, gridInfo.cellWidth, gridInfo.cellHeight);
             setCellColor(coordY * gridInfo.numCols + coordX, currentColor);
-
-            if (x0 === x1 && y0 === y1) break;
-
+    
+            // Comprobar si hemos llegado al punto final
+            if (x0 === x1 && y0 === y1) {
+                break;
+            }
+    
             const e2 = 2 * err;
+            
+            // Avanzar en el eje X si el error lo permite
             if (e2 > -dy) {
                 err -= dy;
                 x0 += sx;
             }
+            
+            // Avanzar en el eje Y si el error lo permite
             if (e2 < dx) {
                 err += dx;
                 y0 += sy;
             }
         }
-    }
 
+    }
+    
     // Función para iniciar el dibujo
     function startDrawing(x, y) {
         isDrawing = true;
@@ -110,7 +125,7 @@ export function initializeCanvasEvents(canvas, context, grid, gridInfo, colorPic
             const x = touch.clientX - rect.left;
             const y = touch.clientY - rect.top;
             startDrawing(x, y);
-            event.preventDefault();  // Prevenir el comportamiento por defecto del navegador
+            //event.preventDefault();  // Prevenir el comportamiento por defecto del navegador
         }
     });
 

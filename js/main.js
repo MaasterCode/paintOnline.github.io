@@ -10,7 +10,7 @@ const colorSelector = document.getElementById('form-color-selector');
 const editButton = document.getElementById('edit-button');
 
 const gridInfo = {
-    "numRows" : 200,
+    "numRows" : 750,
     "numCols" : 400,
     "cellHeight" : 5,
     "cellWidth" : 5,
