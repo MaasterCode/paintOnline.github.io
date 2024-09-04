@@ -10,21 +10,44 @@ canvas {
 }
 
 #color-selector {
-
+    position: fixed;
+    top: 30px;
+    right: 30px;
     display: flex;
     flex-direction: row;
-    margin: 50px 0;
+}
+
+header > h1, p {
+    position: absolute;
+    color: white;
+    pointer-events: none;
+    cursor: none;
+}
+
+p {
+    top: 3vw
+}
+
+.selected-color-text {
+    position: absolute;
+    left: 50%;
+    color: white;
 }
 
 .color {
-    height: 50px;
-    width: 50px;
+    height: 2vw;
+    width: 2vw;
     border: none;
     margin-left: 20px;
     -webkit-appearance: none; /* Para Safari y Chrome */
     -moz-appearance: none; /* Para Firefox */
     appearance: none; /* Estándar */
     background-color: transparent;
-    
     padding: 0;
+
+    &.color-selected {
+        outline: 1px solid black;
+        transform: scale(3px, 3px);
+    }
+    
 }

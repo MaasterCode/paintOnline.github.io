@@ -9,7 +9,8 @@ export function initializeGrid(canvas, context, numColumns, numRows, cellWidth, 
                 const colorHex = '#' + colorInt.toString(16).padStart(6, '0');
     
                 context.fillStyle = colorHex;
-                context.fillRect(j * cellWidth, i * cellHeight, cellWidth, cellHeight);
+                context.clearRect(j * cellWidth, i * cellHeight, cellWidth, cellHeight)
+                context.fillRect(j * cellWidth , i * cellHeight , cellWidth , cellHeight );
             }
         }
     }
@@ -19,12 +20,12 @@ export function initializeGrid(canvas, context, numColumns, numRows, cellWidth, 
         canvas.height = cellHeight * numRows;
 
         fillGrid();
-        for (let i = 0; i <= numColumns; i++) {
+        /*for (let i = 0; i <= numColumns; i++) {
             const x = i * cellWidth;
             context.beginPath();
             context.moveTo(x, 0);
             context.lineTo(x, canvas.height);
-            context.stroke();
+            //context.stroke();
         }
 
         for (let j = 0; j <= numRows; j++) {
@@ -32,8 +33,8 @@ export function initializeGrid(canvas, context, numColumns, numRows, cellWidth, 
             context.beginPath();
             context.moveTo(0, y);
             context.lineTo(canvas.width, y);
-            context.stroke();
-        }
+            //context.stroke();
+        }*/
         
     }
 

@@ -6,14 +6,14 @@ import { initializeCanvasEvents } from './canvasEvents.js';
 
 const canvas = document.getElementById('canv');
 const context = canvas.getContext('2d');
-const colorSelector = document.getElementById('color-selector');
+const colorSelector = document.getElementById('form-color-selector');
 const editButton = document.getElementById('edit-button');
 
 const gridInfo = {
     "numRows" : 200,
-    "numCols" : 200,
-    "cellHeight" : 20,
-    "cellWidth" : 20,
+    "numCols" : 400,
+    "cellHeight" : 5,
+    "cellWidth" : 5,
 }
 const state = new Uint32Array(gridInfo.numCols * gridInfo.numRows); // Cada celda puede almacenar un color de 32 bits (rgba)
 const colorPicker = initializeColorPicker(colorSelector, editButton);

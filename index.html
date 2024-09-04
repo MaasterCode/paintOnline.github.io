@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <h1>Pinta a tu gusto!</h1>
+        <p>Selecciona los colores que mas te gusten y diviertete pintando</p>
+        <div id="color-selector">
+            <button id="edit-button">Editar colores</button>
+            <form id="form-color-selector"></form>
+            <p class="selected-color-text"></p>
+        </div>
+    </header>
     <main>
-        <h1>Elige el color</h1>
-        <button id="edit-button">Editar colores</button>
-        <form id="color-selector"></form>
         <canvas id="canv"></canvas>
-
     </main>
 </body>
 </html>

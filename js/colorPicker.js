@@ -9,14 +9,21 @@ export function initializeColorPicker(colorSelector, editButton) {
         colorSelector.appendChild(input);
     }
 
-    let selectedColor = colorSelector.children[0].value;
+    let selectedColor = "#000000";
+    document.querySelector('.selected-color-text').innerText = selectedColor
 
     colorSelector.addEventListener('click', (e) => {
         if (!e.target.classList.contains('color')) return;
         if (!e.target.classList.contains('editable')) {
             e.preventDefault();
-            selectedColor = e.target.value;
+            const child = e.target.parentElement.childNodes
+            for(let i = 0; i < child.length; i++) {
+                child[i].classList.remove("color-selected")
+            }
+            e.target.classList.add("color-selected")
         }
+        selectedColor = e.target.value;
+        document.querySelector('.selected-color-text').innerText = selectedColor
     });
 
     editButton.addEventListener('click', () => {
@@ -24,6 +31,13 @@ export function initializeColorPicker(colorSelector, editButton) {
         colorInputs.forEach(input => {
             input.classList.toggle('editable');
         });
+        console.log(editButton)
+        if (editButton.classList.contains('editando')) {
+            editButton.innerText = "Editar colores"
+        } else {
+            editButton.innerText = "Seleccionar colores"
+        }
+        editButton.classList.toggle('editando');
     });
 
     return {
